@@ -1,8 +1,8 @@
 package com.udla.evaluaytor.businessdomain.empresa.models;
 
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import jakarta.persistence.Entity;
@@ -13,9 +13,9 @@ import jakarta.persistence.ManyToMany;
 
 @Entity
 @Data
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Proveedor extends Empresa {
-
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -24,5 +24,4 @@ public class Proveedor extends Empresa {
         inverseJoinColumns = @JoinColumn(name = "id_categoria")
     )
     private List<Categoria> categorias;
-
 }

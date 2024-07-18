@@ -20,8 +20,8 @@ spring:
         uri: lb://empresa
         predicates:
         - Path=/api/empresa/**
-        #filters:
-        #- name: AuthenticationFiltering
+        filters:
+        - name: AuthenticationFiltering
 
       - id: evaluacion_service
         uri: lb://evaluacion

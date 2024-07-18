@@ -10,6 +10,7 @@ import com.udla.evaluaytor.businessdomain.empresa.models.Categoria;
 import com.udla.evaluaytor.businessdomain.empresa.models.Proveedor;
 import com.udla.evaluaytor.businessdomain.empresa.repositories.CategoriaRepository;
 import com.udla.evaluaytor.businessdomain.empresa.repositories.ProveedorRepository;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -33,9 +34,9 @@ public class ProveedorImpl implements ProveedorService {
     @Override
     public ProveedorResponseDTO getProveedorById(Long id) {
         Optional<Proveedor> optionalProveedor = proveedorRepository.findByIdWithCategorias(id);
-         if (!optionalProveedor.isPresent()) {
-                new RuntimeException("Proveedor no encontrado con id " + id);
-         }
+        if (!optionalProveedor.isPresent()) {
+            throw new RuntimeException("Proveedor no encontrado con id " + id);
+        }
         Proveedor proveedor = optionalProveedor.get();
         return convertToDTO(proveedor);
     }
@@ -55,28 +56,31 @@ public class ProveedorImpl implements ProveedorService {
         return convertToDTO(proveedorGuardado);
     }
 
-     @Transactional
+    @Transactional
     public ProveedorResponseDTO updateProveedor(Long id, ProveedorDTO proveedorUpdateDTO) {
         Optional<Proveedor> optionalProveedor = proveedorRepository.findById(id);
-            
+
         if (!optionalProveedor.isPresent()) {
             throw new RuntimeException("Proveedor no encontrado con id " + id);
         }
-            
+
         Proveedor proveedor = optionalProveedor.get();
         proveedor.setNombre(proveedorUpdateDTO.getNombre());
         proveedor.setDireccion(proveedorUpdateDTO.getDireccion());
         proveedor.setTelefono(proveedorUpdateDTO.getTelefono());
-    
+
         List<Long> categoriaIds = proveedorUpdateDTO.getCategoriaIds();
         List<Categoria> categorias = categoriaRepository.findAllById(categoriaIds);
         proveedor.setCategorias(categorias);
-    
+
         Proveedor updatedProveedor = proveedorRepository.save(proveedor);
         return convertToDTO(updatedProveedor);
     }
-    
 
+    @Override
+    public void deleteProveedor(Long id) {
+        proveedorRepository.deleteById(id);
+    }
 
     private ProveedorResponseDTO convertToDTO(Proveedor proveedor) {
         ProveedorResponseDTO dto = new ProveedorResponseDTO();
