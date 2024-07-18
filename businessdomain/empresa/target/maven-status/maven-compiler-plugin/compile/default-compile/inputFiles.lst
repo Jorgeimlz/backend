@@ -1,0 +1,15 @@
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\controllers\EmpresaController.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\dto\CategoriaDTO.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\dto\ProveedorDTO.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\dto\ProveedorResponseDTO.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\EmpresaApplication.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\models\Categoria.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\models\Empresa.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\models\Perito.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\models\Proveedor.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\repositories\CategoriaRepository.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\repositories\EmpresaRepository.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\repositories\PeritoRepository.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\repositories\ProveedorRepository.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\services\ProveedorImpl.java
+C:\Users\Jorge\Downloads\evaluaytor-main\evaluaytor-main\backend\businessdomain\empresa\src\main\java\com\udla\evaluaytor\businessdomain\empresa\services\ProveedorService.java
