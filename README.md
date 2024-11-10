@@ -1,91 +1,68 @@
-# Frontend de la Aplicación Web de Alimentación
+# Backend de NutriSync
 
-Este proyecto es la interfaz de usuario de una aplicación web de alimentación, desarrollada en Next.js, que permite gestionar ingredientes, recibir recomendaciones de recetas personalizadas y generar planes alimenticios. El frontend está desplegado en Netlify y se conecta con un backend en Django, que proporciona los datos a través de una API.
+Este proyecto es el backend de la aplicación NutriSync, una plataforma de alimentación personalizada que permite la gestión de usuarios, ingredientes, recetas, categorías, dietas y planes alimenticios. Este backend está construido con Django y Django REST Framework, y está desplegado en Render. También se utiliza JWT para autenticación y Swagger para documentación de la API.
 
 ## Tecnologías Utilizadas
 
-- **Next.js**: Framework de React para construir aplicaciones web.
-- **React**: Librería de JavaScript para construir interfaces de usuario.
-- **Tailwind CSS**: Framework CSS para estilos rápidos y adaptables.
-- **Axios**: Librería para hacer solicitudes HTTP.
-- **TypeScript**: Superset de JavaScript que añade tipado estático.
-- **JWT**: JSON Web Tokens para manejo de autenticación (frontend maneja tokens en el almacenamiento local).
+- **Django**: Framework de Python para desarrollo web.
+- **Django REST Framework**: Herramienta para crear APIs robustas con Django.
+- **PostgreSQL**: Base de datos relacional utilizada en Render.
+- **djangorestframework-simplejwt**: Autenticación basada en JSON Web Tokens (JWT).
+- **drf-yasg**: Generador de documentación Swagger y ReDoc para la API.
+- **django-cors-headers**: Middleware para manejar CORS y permitir peticiones desde otros dominios.
+- **gunicorn**: Servidor HTTP para ejecutar la aplicación en producción.
 
-## Estructura de Carpetas
-
-- **src/app**: Contiene las diferentes páginas y secciones de la aplicación.
-  - **admin**: Módulo de administración para gestionar usuarios y otros servicios.
-  - **categorias**: Gestión de categorías.
-  - **dieta**: Gestión de dietas.
-  - **ingredientes**: Módulo de ingredientes.
-  - **login**: Autenticación de usuarios.
-  - **no-access**: Página de acceso denegado para usuarios sin permisos.
-  - **planes-alimenticios**: Gestión de planes alimenticios personalizados.
-  - **recetas**: Sección de recetas con opciones de visualización y edición.
-  - **register**: Registro de nuevos usuarios.
-  - **welcome**: Pantalla de bienvenida.
-
-- **src/components**: Componentes reutilizables de la aplicación.
-  - `FormInput.tsx`: Componente de entrada de formulario.
-  - `LoginForm.tsx`: Componente de formulario de inicio de sesión.
-  - `RegisterForm.tsx`: Componente de formulario de registro.
-
-- **src/config**: Configuración de la API.
-  - `apiConfig.ts`: Define los endpoints de la API para conectar con el backend.
-
-- **src/utils**: Utilidades y funciones auxiliares.
-
-## Configuración de API (`src/config/apiConfig.ts`)
-
-Este archivo contiene las URL de los endpoints necesarios para interactuar con el backend. Algunas de las rutas configuradas son:
-
-- **Usuarios**: `/api/users/`, `/api/users/register/`
-- **Categorías**: `/api/categorias/`, `/api/categorias/crear/`
-- **Dietas**: `/api/dietas/`, `/api/dietas/agregar/`
-- **Ingredientes**: `/api/ingredientes/`, `/api/ingredientes/agregar/`
-- **Planes Alimenticios**: `/api/planes-alimenticios/`, `/api/planes-alimenticios/agregar/`
-- **Recetas**: `/api/recetas/`, `/api/recetas/agregar/`
-
-## Configuración del Proyecto
+## Instalación
 
 ### Requisitos
 
-Es necesario tener instalado **Node.js** en una versión compatible, así como un gestor de paquetes, ya sea **npm** o **yarn**.
+- Python 3.8 o superior.
+- PostgreSQL como base de datos.
+- Un entorno virtual para aislar dependencias (recomendado).
 
-### Instalación
+### Configuración
 
-1. Clonar el repositorio y ubicarse en la carpeta del proyecto.
-2. Instalar las dependencias definidas en el archivo `package.json`.
-3. Configurar las variables de entorno en un archivo `.env.local` en la raíz del proyecto. Asegurarse de definir `NEXT_PUBLIC_API_BASE_URL` para especificar la URL base de la API.
-4. Iniciar el servidor de desarrollo para trabajar en modo local.
-5. Compilar la aplicación para producción y desplegarla en el servidor.
+1. **Clonar el repositorio y acceder al directorio del proyecto.**
 
-## Scripts Disponibles
+2. **Crear un entorno virtual e instalar las dependencias** listadas en `requirements.txt`.
 
-- `dev`: Inicia el servidor de desarrollo de Next.js.
-- `build`: Compila el proyecto para producción.
-- `start`: Inicia el servidor en modo producción.
-- `lint`: Ejecuta ESLint para comprobar el código.
+3. **Configurar las variables de entorno**:
+   - Configurar las credenciales de la base de datos en `settings.py` o a través de variables de entorno, incluyendo:
+     - `DATABASE_URL`: URL de la base de datos PostgreSQL proporcionada por Render.
+     - `SECRET_KEY`: Llave secreta de Django.
+     - `DEBUG`: Definir como `False` en producción.
+   
+4. **Realizar las migraciones** para configurar la base de datos.
 
-## Estilos
+5. **Crear un superusuario o admin (staff)** para acceder al panel de administración de Django.
 
-Este proyecto utiliza **Tailwind CSS** para una rápida personalización de estilos y adaptabilidad en distintas pantallas.
+6. **Correr el servidor de desarrollo** para probar la aplicación.
 
-## Despliegue
+## Estructura de Carpetas
 
-El frontend está desplegado en Netlify. Es importante configurar el `NEXT_PUBLIC_API_BASE_URL` en las variables de entorno de Netlify para asegurar una conexión adecuada con el backend.
+- **NutriSync**: Directorio principal de configuración de Django, que contiene archivos esenciales como `settings.py`, `urls.py` y `wsgi.py`.
+- **apps**:
+  - **users**: Gestión de usuarios y autenticación.
+  - **ingredientes**: CRUD de ingredientes.
+  - **categorias**: Gestión de categorías de alimentos.
+  - **recetas**: CRUD de recetas y recomendaciones personalizadas.
+  - **dieta**: Módulo para gestión de dietas.
+  - **planes_alimenticios**: Creación y manejo de planes alimenticios personalizados.
 
-## Funcionalidades del Frontend
+## Configuración de la Base de Datos
 
-- **Autenticación y autorización**: Permite el inicio de sesión de usuarios y controla el acceso basado en roles (usuario o administrador).
-- **Manejo de CRUD**:
-  - **Usuarios**: Los administradores pueden gestionar los usuarios desde la interfaz de administración.
-  - **Categorías**: CRUD completo para categorías.
-  - **Dietas**: Permite ver y crear dietas.
-  - **Ingredientes**: CRUD completo para los ingredientes disponibles.
-  - **Planes alimenticios**: Creación y gestión de planes alimenticios personalizados.
-  - **Recetas**: Permite agregar, editar, eliminar y ver recetas, incluyendo recomendaciones personalizadas basadas en ingredientes disponibles.
+La base de datos está configurada para utilizar PostgreSQL en Render. La configuración básica en `settings.py` se ve así:
+"PARA CONFIGURAR LA BASE DE DATOS ES NECESARIO CREAR UNA BDD POSTGRESQL EN RENDER"
 
-## Notas Adicionales
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nutrisyncbdd',
+        'USER': 'nutrisyncbdd_user',
+        'PASSWORD': 'contraseña_proporcionada',
+        'HOST': 'host_de_render',
+        'PORT': '5432',
+    }
+}
 
-Este README se enfoca exclusivamente en el frontend de la aplicación. Si deseas detalles sobre el backend, consulta el README correspondiente en el repositorio del backend.
